@@ -22,6 +22,7 @@ public class ForumController {
 
     /*
      * 投稿内容表示処理
+     * 
      */
     @GetMapping("/contents")
     public List<ReportForm> getAllContents() {
@@ -30,6 +31,7 @@ public class ForumController {
 
     /*
      * 新規投稿処理
+     * 
      */
     @PostMapping("/add")
     public void addContent(@RequestBody ReportForm reportForm) {
