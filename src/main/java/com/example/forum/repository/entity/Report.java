@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "report")
+@Table(name = "reports")
 @Getter
 @Setter
 public class Report {
@@ -23,4 +23,6 @@ public class Report {
     @Column
     private String content;
 
+    @Column
+    private String userId;
 }

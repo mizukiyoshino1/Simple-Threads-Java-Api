@@ -11,4 +11,6 @@ public class ReportForm {
 
     private String content;
 
+    private String userId;
+
 }

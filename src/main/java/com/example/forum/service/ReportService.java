@@ -34,6 +34,7 @@ public class ReportService {
             Report result = results.get(i);
             report.setId(result.getId());
             report.setContent(result.getContent());
+            report.setUserId(result.getUserId());
             reports.add(report);
         }
         return reports;
@@ -54,7 +55,16 @@ public class ReportService {
         Report report = new Report();
         report.setId(reqReport.getId());
         report.setContent(reqReport.getContent());
+        report.setUserId(reqReport.getUserId());
         return report;
+    }
+
+    /**
+     * レコード削除
+     * 
+     */
+    public void deleteReport(int id) {
+        reportRepository.deleteById(id);
     }
 
 }

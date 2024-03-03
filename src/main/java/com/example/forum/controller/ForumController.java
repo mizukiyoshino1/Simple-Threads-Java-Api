@@ -4,7 +4,9 @@ import com.example.forum.controller.form.ReportForm;
 import com.example.forum.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,4 +39,14 @@ public class ForumController {
     public void addContent(@RequestBody ReportForm reportForm) {
         reportService.saveReport(reportForm);
     }
+
+    /*
+     * 投稿の削除処理
+     * 
+     */
+    @DeleteMapping("/delete/{id}")
+    public void deleteContent(@PathVariable int id) {
+        reportService.deleteReport(id);
+    }
+
 }
