@@ -1,6 +1,7 @@
 package com.example.forum.controller;
 
 import com.example.forum.controller.form.ReportForm;
+import com.example.forum.repository.entity.Report;
 import com.example.forum.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,9 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -29,6 +32,16 @@ public class ForumController {
     @GetMapping("/contents")
     public List<ReportForm> getAllContents() {
         return reportService.findAllReport();
+    }
+
+    /**
+     * ユーザの投稿取得処理
+     * 
+     */
+    @PostMapping("/getmyreports")
+    public List<ReportForm> getUserReports(@RequestBody Map<String, String> requestBody) {
+        String userId = requestBody.get("userId");
+        return reportService.findUserReports(userId);
     }
 
     /*

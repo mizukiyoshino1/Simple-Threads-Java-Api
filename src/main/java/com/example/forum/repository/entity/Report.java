@@ -1,5 +1,10 @@
 package com.example.forum.repository.entity;
 
+import java.sql.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,4 +30,15 @@ public class Report {
 
     @Column
     private String userId;
+
+    @Column
+    private String userName;
+
+    @Column
+    @CreationTimestamp
+    private Timestamp createdDate;
+
+    @Column
+    @UpdateTimestamp
+    private Timestamp updatedDate;
 }

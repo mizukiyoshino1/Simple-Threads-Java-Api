@@ -23,6 +23,16 @@ public class ReportService {
         return reports;
     }
 
+    /**
+     * ユーザのレポートを取得する処理
+     * 
+     */
+    public List<ReportForm> findUserReports(String userId) {
+        List<Report> results = reportRepository.findByUserId(userId);
+        List<ReportForm> reports = setReportForm(results);
+        return reports;
+    }
+
     /*
      * DBから取得したデータをFormに設定
      */
@@ -35,6 +45,7 @@ public class ReportService {
             report.setId(result.getId());
             report.setContent(result.getContent());
             report.setUserId(result.getUserId());
+            report.setUserName(result.getUserName());
             reports.add(report);
         }
         return reports;
@@ -56,6 +67,7 @@ public class ReportService {
         report.setId(reqReport.getId());
         report.setContent(reqReport.getContent());
         report.setUserId(reqReport.getUserId());
+        report.setUserName(reqReport.getUserName());
         return report;
     }
 

@@ -13,4 +13,10 @@ public class ReportForm {
 
     private String userId;
 
+    private String userName;
+
+    private String createdDate;
+
+    private String updatedDate;
+
 }
