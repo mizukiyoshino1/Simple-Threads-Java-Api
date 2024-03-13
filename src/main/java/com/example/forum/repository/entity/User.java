@@ -1,10 +1,5 @@
 package com.example.forum.repository.entity;
 
-import java.sql.Timestamp;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,10 +10,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "reports")
+@Table(name = "users")
 @Getter
 @Setter
-public class Report {
+public class User {
 
     @Id
     @Column
@@ -26,16 +21,14 @@ public class Report {
     private int id;
 
     @Column
-    private String content;
-
-    @Column
     private String userId;
 
     @Column
-    @CreationTimestamp
-    private Timestamp createdDate;
+    private String userName;
 
     @Column
-    @UpdateTimestamp
-    private Timestamp updatedDate;
+    private String profileImageUrl;
+
+    @Column
+    private String profileText;
 }

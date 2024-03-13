@@ -18,7 +18,7 @@ public class ReportService {
      * レコード全件取得処理
      */
     public List<ReportForm> findAllReport() {
-        List<Report> results = reportRepository.findAll();
+        List<Object[]> results = reportRepository.findAllReportsWithUserInfo();
         List<ReportForm> reports = setReportForm(results);
         return reports;
     }
@@ -28,7 +28,7 @@ public class ReportService {
      * 
      */
     public List<ReportForm> findUserReports(String userId) {
-        List<Report> results = reportRepository.findByUserId(userId);
+        List<Object[]> results = reportRepository.findByUserId(userId);
         List<ReportForm> reports = setReportForm(results);
         return reports;
     }
@@ -36,16 +36,15 @@ public class ReportService {
     /*
      * DBから取得したデータをFormに設定
      */
-    private List<ReportForm> setReportForm(List<Report> results) {
+    private List<ReportForm> setReportForm(List<Object[]> results) {
         List<ReportForm> reports = new ArrayList<>();
 
-        for (int i = 0; i < results.size(); i++) {
+        for (Object[] result : results) {
             ReportForm report = new ReportForm();
-            Report result = results.get(i);
-            report.setId(result.getId());
-            report.setContent(result.getContent());
-            report.setUserId(result.getUserId());
-            report.setUserName(result.getUserName());
+            report.setId((Integer) result[0]);
+            report.setContent((String) result[1]);
+            report.setUserId((String) result[2]);
+            report.setUserName((String) result[3]);
             reports.add(report);
         }
         return reports;
@@ -67,7 +66,6 @@ public class ReportService {
         report.setId(reqReport.getId());
         report.setContent(reqReport.getContent());
         report.setUserId(reqReport.getUserId());
-        report.setUserName(reqReport.getUserName());
         return report;
     }
 
