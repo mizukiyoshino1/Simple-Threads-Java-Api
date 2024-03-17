@@ -38,3 +38,6 @@ out/
 
 #application.propertiesファイルを無視する
 application.properties
+
+#profileImgの変更を無視する
+/profileImg

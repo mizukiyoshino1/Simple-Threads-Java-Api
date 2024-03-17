@@ -5,11 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ReportForm {
+public class UserForm {
 
     private int id;
-
-    private String content;
 
     private String userId;
 
@@ -17,8 +15,5 @@ public class ReportForm {
 
     private String profileImageUrl;
 
-    private String createdDate;
-
-    private String updatedDate;
-
+    private String profileText;
 }
