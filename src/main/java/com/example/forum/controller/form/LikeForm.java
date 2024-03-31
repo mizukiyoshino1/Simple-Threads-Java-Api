@@ -5,24 +5,16 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ReportForm {
-
+public class LikeForm {
     private int id;
-
-    private String content;
 
     private String userId;
 
-    private String userName;
-
-    private String profileImageUrl;
+    private Integer reportId;
 
     private Integer likeFlg;
 
     private Integer likeCount;
 
     private String createdDate;
-
-    private String updatedDate;
-
 }

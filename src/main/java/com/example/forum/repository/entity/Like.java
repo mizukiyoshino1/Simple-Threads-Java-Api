@@ -3,7 +3,6 @@ package com.example.forum.repository.entity;
 import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,30 +14,26 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "reports")
+@Table(name = "likes")
 @Getter
 @Setter
-public class Report {
+public class Like {
 
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column
-    private String content;
-
-    @Column
+    @Column(name = "user_id")
     private String userId;
 
-    @Column(name = "likes_count")
-    private int likesCount;
+    @Column(name = "report_id")
+    private Integer reportId;
 
-    @Column
+    @Column(name = "like_flg", columnDefinition = "INT DEFAULT 1")
+    private Integer likeFlag;
+
+    @Column(name = "created_date", updatable = false)
     @CreationTimestamp
     private Timestamp createdDate;
-
-    @Column
-    @UpdateTimestamp
-    private Timestamp updatedDate;
 }

@@ -5,7 +5,6 @@ import com.example.forum.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,9 +26,10 @@ public class ForumController {
      * 投稿内容表示処理
      * 
      */
-    @GetMapping("/contents")
-    public List<ReportForm> getAllContents() {
-        return reportService.findAllReport();
+    @PostMapping("/contents")
+    public List<ReportForm> getAllContents(@RequestBody Map<String, String> requestBody) {
+        String userId = requestBody.get("userId");
+        return reportService.findAllReport(userId);
     }
 
     /**

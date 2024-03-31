@@ -1,0 +1,65 @@
+package com.example.forum.controller;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.forum.repository.entity.Report;
+import com.example.forum.service.LikeService;
+import com.example.forum.service.ReportService;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
+public class LikeController {
+
+    @Autowired
+    LikeService likeService;
+
+    @Autowired
+    ReportService reportService;
+
+    /**
+     * いいねの追加・取り消し処理
+     * 
+     * @param requestBody
+     */
+    @PostMapping("like")
+    public Integer likePost(@RequestBody Map<String, String> requestBody) {
+        String userId = requestBody.get("userId");
+        String reqReportId = requestBody.get("reportId");
+
+        // Integer型に変換
+        Integer reportId = Integer.parseInt(reqReportId);
+
+        // いいね済みか確認する(DBに存在しているかどうか)
+        Boolean likeFlg = likeService.findLike(userId, reportId);
+
+        // いいねした対象のレポートテーブルを取得する
+        Report report = reportService.findReport(reportId);
+
+        // いいね済みでなかった場合
+        if (!likeFlg) {
+            // レポートテーブルのいいねカウント数を+1する
+            reportService.addLikeCount(report);
+
+            // いいね済みを登録する
+            likeService.likeSave(userId, reportId);
+            return 1;
+        } else {
+            // レポートテーブルのいいねカウント数を-1する
+            reportService.decrementLikeCount(report);
+
+            // いいね済みを削除する
+            likeService.deleteLike(userId, reportId);
+            return 0;
+        }
+    }
+
+}

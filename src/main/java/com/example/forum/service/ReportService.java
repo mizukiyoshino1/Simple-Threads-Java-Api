@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReportService {
@@ -21,8 +22,8 @@ public class ReportService {
     /*
      * レコード全件取得処理
      */
-    public List<ReportForm> findAllReport() {
-        List<Object[]> results = reportRepository.findAllReportsWithUserInfo();
+    public List<ReportForm> findAllReport(String userId) {
+        List<Object[]> results = reportRepository.findAllReportsWithUserInfo(userId);
         List<ReportForm> reports = setReportForm(results);
         return reports;
     }
@@ -35,6 +36,15 @@ public class ReportService {
         List<Object[]> results = reportRepository.findByUserId(userId);
         List<ReportForm> reports = setReportForm(results);
         return reports;
+    }
+
+    /**
+     * いいね対象のレポートを取得する処理
+     * 
+     */
+    public Report findReport(Integer reportId) {
+        Optional<Report> report = reportRepository.findById(reportId);
+        return report.orElse(null);
     }
 
     /*
@@ -72,7 +82,8 @@ public class ReportService {
             } else {
                 report.setProfileImageUrl("");
             }
-
+            report.setLikeFlg((Integer) result[5]);
+            report.setLikeCount((Integer) result[6]);
             reports.add(report);
         }
         return reports;
@@ -103,6 +114,24 @@ public class ReportService {
      */
     public void deleteReport(int id) {
         reportRepository.deleteById(id);
+    }
+
+    /**
+     * レポートに対していいね数を+1する
+     * 
+     */
+    public void addLikeCount(Report report) {
+        report.setLikesCount(report.getLikesCount() + 1);
+        reportRepository.save(report);
+    }
+
+    /**
+     * レポートに対していいね数を-1する
+     * 
+     */
+    public void decrementLikeCount(Report report) {
+        report.setLikesCount(report.getLikesCount() - 1);
+        reportRepository.save(report);
     }
 
 }
