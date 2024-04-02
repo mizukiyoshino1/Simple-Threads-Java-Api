@@ -31,7 +31,7 @@ public class LikeController {
      * @param requestBody
      */
     @PostMapping("like")
-    public Integer likePost(@RequestBody Map<String, String> requestBody) {
+    public Report likePost(@RequestBody Map<String, String> requestBody) {
         String userId = requestBody.get("userId");
         String reqReportId = requestBody.get("reportId");
 
@@ -51,14 +51,22 @@ public class LikeController {
 
             // いいね済みを登録する
             likeService.likeSave(userId, reportId);
-            return 1;
+
+            // いいねフラグを取得
+
+            // 返却値(※カウント数が更新済み)
+            return report;
         } else {
             // レポートテーブルのいいねカウント数を-1する
             reportService.decrementLikeCount(report);
 
             // いいね済みを削除する
             likeService.deleteLike(userId, reportId);
-            return 0;
+
+            // いいねフラグを取得
+
+            // 返却値(※カウント数が更新済み)
+            return report;
         }
     }
 
