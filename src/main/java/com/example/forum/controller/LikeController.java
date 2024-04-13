@@ -1,5 +1,6 @@
 package com.example.forum.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.forum.controller.form.LikeNotificationForm;
 import com.example.forum.repository.entity.Report;
 import com.example.forum.service.LikeService;
 import com.example.forum.service.ReportService;
@@ -24,6 +26,18 @@ public class LikeController {
 
     @Autowired
     ReportService reportService;
+
+    /**
+     * いいね通知取得処理
+     * 
+     * @return likeNotification いいね通知情報を返却する
+     */
+    @PostMapping("notifications")
+    public List<LikeNotificationForm> getAllLikes(@RequestBody Map<String, String> requestBody) {
+        String userId = requestBody.get("userId");
+        List<LikeNotificationForm> likeNotification = likeService.findAllLikes(userId);
+        return likeNotification;
+    }
 
     /**
      * いいねの追加・取り消し処理
