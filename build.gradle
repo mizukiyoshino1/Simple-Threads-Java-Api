@@ -40,3 +40,8 @@ tasks.named('bootBuildImage') {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+bootRun {
+    systemProperty 'spring.profiles.active', project.findProperty('spring.profiles.active') ?: 'dev'
+    jvmArgs '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005'
+}

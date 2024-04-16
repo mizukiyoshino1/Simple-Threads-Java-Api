@@ -41,3 +41,9 @@ application.properties
 
 #profileImgの変更を無視する
 /profileImg
+
+# 開発環境環境変数
+application-dev.properties
+
+# 本番環境環境変数
+application-prod.properties

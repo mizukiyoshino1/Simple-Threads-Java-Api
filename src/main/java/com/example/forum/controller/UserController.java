@@ -19,7 +19,7 @@ import com.example.forum.service.UserService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "${front.url}")
 public class UserController {
 
     @Autowired
