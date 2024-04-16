@@ -18,6 +18,9 @@ public interface LikeRepository extends JpaRepository<Like, Integer> {
     // いいね済みを削除する
     void deleteByUserIdAndReportId(String userId, Integer reportId);
 
+    // レポート削除時、いいねテーブルに登録されている項目を全て削除する
+    void deleteByReportId(Integer reportId);
+
     // ログインしているユーザの投稿に対し、誰からいいねがきているか確認する
     @Query("SELECT r.id, r.content, l.userId, u.userName, u.profileImageUrl, l.createdDate " +
             "FROM Like l " +

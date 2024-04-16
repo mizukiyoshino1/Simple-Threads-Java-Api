@@ -1,10 +1,12 @@
 package com.example.forum.service;
 
 import com.example.forum.controller.form.ReportForm;
+import com.example.forum.repository.LikeRepository;
 import com.example.forum.repository.ReportRepository;
 import com.example.forum.repository.entity.Report;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +20,9 @@ import java.util.Optional;
 public class ReportService {
     @Autowired
     ReportRepository reportRepository;
+
+    @Autowired
+    LikeRepository likeRepository;
 
     /*
      * レコード全件取得処理
@@ -112,7 +117,12 @@ public class ReportService {
      * レコード削除
      * 
      */
+    @Transactional
     public void deleteReport(int id) {
+        // 関連するlikeテーブルのレコードを削除
+        likeRepository.deleteByReportId(id);
+
+        // レポートの削除
         reportRepository.deleteById(id);
     }
 
