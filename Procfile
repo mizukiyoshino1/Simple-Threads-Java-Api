@@ -1,1 +1,1 @@
-web: java -jar forum-0.0.1-SNAPSHOT.jar
+web: java -jar build/libs/forum-0.0.1-SNAPSHOT.jar
