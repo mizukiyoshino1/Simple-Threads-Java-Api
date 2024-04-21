@@ -18,7 +18,7 @@ import com.example.forum.repository.entity.User;
 import com.example.forum.service.UserService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api")
 @CrossOrigin(origins = "${front.url}")
 public class UserController {
 
