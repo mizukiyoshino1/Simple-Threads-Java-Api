@@ -35,6 +35,9 @@ out/
 ### VS Code ###
 .vscode/
 
+#gradle/wrapperを無視する
+gradle/wrapper/
+
 #application.propertiesファイルを無視する
 application.properties
 
