@@ -1,9 +1,5 @@
 package com.example.forum.service;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Base64;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,8 +64,8 @@ public class UserService {
      */
     private UserForm setUserForm(User result) {
 
+        // ユーザが見つからない場合の処理
         if (result == null) {
-            // ユーザが見つからない場合の処理
             return null;
         }
 
@@ -78,29 +74,7 @@ public class UserService {
         userForm.setId((Integer) result.getId());
         userForm.setUserId((String) result.getUserId());
         userForm.setUserName((String) result.getUserName());
-        // ファイルパスからBase64エンコードされた画像データを取得
-        String filePath = (String) result.getProfileImageUrl(); // 仮のファイルパス取得方法
-        byte[] imageDataBytes = null;
-        if (filePath != null) {
-            try {
-                File file = new File(filePath);
-                imageDataBytes = Files.readAllBytes(file.toPath());
-            } catch (IOException e) {
-                e.printStackTrace();
-                // エラー処理
-            }
-
-            // Base64エンコードされた画像データを文字列に変換して設定
-            if (imageDataBytes != null) {
-                String imageDataString = Base64.getEncoder().encodeToString(imageDataBytes);
-                userForm.setProfileImageUrl("data:image/png;base64," + imageDataString);
-            } else {
-                // エラー時の処理
-                userForm.setProfileImageUrl(""); // エラー時は空文字列を設定するなどの処理を行う
-            }
-        } else {
-            userForm.setProfileImageUrl("");
-        }
+        userForm.setProfileImageUrl((String) result.getProfileImageUrl());
         userForm.setProfileText((String) result.getProfileText());
 
         return userForm;

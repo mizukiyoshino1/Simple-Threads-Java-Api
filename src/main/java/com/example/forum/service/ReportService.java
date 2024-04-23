@@ -8,11 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,29 +60,7 @@ public class ReportService {
             report.setContent((String) result[1]);
             report.setUserId((String) result[2]);
             report.setUserName((String) result[3]);
-            // ファイルパスからBase64エンコードされた画像データを取得
-            String filePath = (String) result[4]; // 仮のファイルパス取得方法
-            byte[] imageDataBytes = null;
-            if (filePath != null) {
-                try {
-                    File file = new File(filePath);
-                    imageDataBytes = Files.readAllBytes(file.toPath());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    // エラー処理
-                }
-
-                // Base64エンコードされた画像データを文字列に変換して設定
-                if (imageDataBytes != null) {
-                    String imageDataString = Base64.getEncoder().encodeToString(imageDataBytes);
-                    report.setProfileImageUrl("data:image/png;base64," + imageDataString);
-                } else {
-                    // エラー時の処理
-                    report.setProfileImageUrl(""); // エラー時は空文字列を設定するなどの処理を行う
-                }
-            } else {
-                report.setProfileImageUrl("");
-            }
+            report.setProfileImageUrl((String) result[4]);
             report.setLikeFlg((Integer) result[5]);
             report.setLikeCount((Integer) result[6]);
             reports.add(report);
@@ -121,7 +95,6 @@ public class ReportService {
     public void deleteReport(int id) {
         // 関連するlikeテーブルのレコードを削除
         likeRepository.deleteByReportId(id);
-
         // レポートの削除
         reportRepository.deleteById(id);
     }
