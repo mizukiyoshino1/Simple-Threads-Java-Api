@@ -1,5 +1,7 @@
 HELP.md
 .gradle
+
+### HerokuPush時にコメントアウトする
 # build/
 # !**/src/main/**/build/
 # !**/src/test/**/build/
@@ -36,7 +38,7 @@ out/
 .vscode/
 
 #gradle/wrapperを無視する
-gradle/wrapper/
+# gradle/wrapper/
 
 #application.propertiesファイルを無視する
 application.properties
