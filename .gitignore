@@ -5,6 +5,7 @@ HELP.md
 # build/
 # !**/src/main/**/build/
 # !**/src/test/**/build/
+# gradle/wrapper/
 
 ### STS ###
 .apt_generated
@@ -36,9 +37,6 @@ out/
 
 ### VS Code ###
 .vscode/
-
-#gradle/wrapperを無視する
-# gradle/wrapper/
 
 #application.propertiesファイルを無視する
 application.properties
