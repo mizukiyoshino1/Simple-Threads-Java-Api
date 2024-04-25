@@ -60,4 +60,15 @@ public class ForumController {
         reportService.deleteReport(id);
     }
 
+    /**
+     * 投稿の検索処理
+     * 
+     */
+    @PostMapping("/search")
+    public List<ReportForm> searchContent(@RequestBody Map<String, String> requestBody) {
+        String userId = requestBody.get("userId");
+        String searchTerm = requestBody.get("searchTerm");
+        return reportService.searchReportsByTerm(userId, searchTerm);
+    }
+
 }

@@ -48,6 +48,16 @@ public class ReportService {
         return report.orElse(null);
     }
 
+    /**
+     * 検索用語を用いてレポートを検索する処理
+     * 
+     */
+    public List<ReportForm> searchReportsByTerm(String userId, String searchTerm) {
+        List<Object[]> results = reportRepository.findByContentContaining(userId, searchTerm);
+        List<ReportForm> reports = setReportForm(results);
+        return reports;
+    }
+
     /*
      * DBから取得したデータをFormに設定
      */
