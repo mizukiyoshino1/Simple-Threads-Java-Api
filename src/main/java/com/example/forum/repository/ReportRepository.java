@@ -20,7 +20,8 @@ public interface ReportRepository extends JpaRepository<Report, Integer> {
                         "r.likesCount, r.createdDate, r.updatedDate " +
                         "FROM Report r " +
                         "LEFT JOIN User u ON r.userId = u.userId " +
-                        "LEFT JOIN Like l ON l.reportId = r.id AND l.userId = :userId")
+                        "LEFT JOIN Like l ON l.reportId = r.id AND l.userId = :userId " +
+                        "ORDER BY r.createdDate DESC")
         List<Object[]> findAllReportsWithUserInfo(@Param("userId") String userId);
 
         /**
@@ -34,7 +35,8 @@ public interface ReportRepository extends JpaRepository<Report, Integer> {
                         "FROM Report r " +
                         "LEFT JOIN User u ON r.userId = u.userId " +
                         "LEFT JOIN Like l ON l.reportId = r.id AND l.userId = :userId " +
-                        "WHERE r.userId = :userId")
+                        "WHERE r.userId = :userId " +
+                        "ORDER BY r.createdDate DESC")
         List<Object[]> findByUserId(@Param("userId") String userId);
 
         /**
@@ -48,6 +50,7 @@ public interface ReportRepository extends JpaRepository<Report, Integer> {
                         "FROM Report r " +
                         "LEFT JOIN User u ON r.userId = u.userId " +
                         "LEFT JOIN Like l ON l.reportId = r.id AND l.userId = :userId " +
-                        "WHERE r.content LIKE CONCAT('%', :searchTerm, '%')")
+                        "WHERE r.content LIKE CONCAT('%', :searchTerm, '%') " +
+                        "ORDER BY r.createdDate DESC")
         List<Object[]> findByContentContaining(@Param("userId") String userId, @Param("searchTerm") String searchTerm);
 }
