@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.forum.ForumApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-04-25T14:58:17" hostname="mizukinoMacBook-Air.local" time="0.835">
+<testsuite name="com.example.forum.ForumApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-04-27T06:49:22" hostname="mizukinoMacBook-Air.local" time="0.845">
   <properties/>
-  <testcase name="contextLoads()" classname="com.example.forum.ForumApplicationTests" time="0.835"/>
-  <system-out><![CDATA[23:58:09.598 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.forum.ForumApplicationTests]: ForumApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-23:58:09.798 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.forum.ForumApplication for test class com.example.forum.ForumApplicationTests
+  <testcase name="contextLoads()" classname="com.example.forum.ForumApplicationTests" time="0.845"/>
+  <system-out><![CDATA[15:49:12.445 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.forum.ForumApplicationTests]: ForumApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:49:12.801 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.forum.ForumApplication for test class com.example.forum.ForumApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -13,23 +13,23 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.1.8)
 
-2024-04-25T23:58:10.431+09:00  INFO 67863 --- [    Test worker] c.example.forum.ForumApplicationTests    : Starting ForumApplicationTests using Java 17.0.5 with PID 67863 (started by mizukiyoshino in /Users/mizukiyoshino/Documents/SimpleThreads/api_java)
-2024-04-25T23:58:10.435+09:00  INFO 67863 --- [    Test worker] c.example.forum.ForumApplicationTests    : The following 1 profile is active: "dev"
-2024-04-25T23:58:11.647+09:00  INFO 67863 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-04-25T23:58:11.776+09:00  INFO 67863 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 115 ms. Found 4 JPA repository interfaces.
-2024-04-25T23:58:12.624+09:00  INFO 67863 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-04-25T23:58:13.061+09:00  INFO 67863 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@664e848c
-2024-04-25T23:58:13.064+09:00  INFO 67863 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-04-25T23:58:13.126+09:00  INFO 67863 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-04-25T23:58:13.184+09:00  INFO 67863 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.20.Final
-2024-04-25T23:58:13.188+09:00  INFO 67863 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2024-04-25T23:58:13.623+09:00  INFO 67863 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-04-25T23:58:13.715+09:00  WARN 67863 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-04-25T23:58:15.090+09:00  INFO 67863 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-04-25T23:58:15.095+09:00  INFO 67863 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-04-25T23:58:15.441+09:00  INFO 67863 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-04-25T23:58:17.267+09:00  WARN 67863 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-04-25T23:58:17.833+09:00  INFO 67863 --- [    Test worker] c.example.forum.ForumApplicationTests    : Started ForumApplicationTests in 7.821 seconds (process running for 9.769)
+2024-04-27T15:49:13.695+09:00  INFO 42056 --- [    Test worker] c.example.forum.ForumApplicationTests    : Starting ForumApplicationTests using Java 17.0.5 with PID 42056 (started by mizukiyoshino in /Users/mizukiyoshino/Documents/SimpleThreads/api_java)
+2024-04-27T15:49:13.700+09:00  INFO 42056 --- [    Test worker] c.example.forum.ForumApplicationTests    : The following 1 profile is active: "dev"
+2024-04-27T15:49:15.059+09:00  INFO 42056 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-27T15:49:15.163+09:00  INFO 42056 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 4 JPA repository interfaces.
+2024-04-27T15:49:16.727+09:00  INFO 42056 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-27T15:49:17.211+09:00  INFO 42056 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@543d5863
+2024-04-27T15:49:17.213+09:00  INFO 42056 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-27T15:49:17.294+09:00  INFO 42056 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-27T15:49:17.461+09:00  INFO 42056 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.20.Final
+2024-04-27T15:49:17.469+09:00  INFO 42056 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-04-27T15:49:18.235+09:00  INFO 42056 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-27T15:49:18.341+09:00  WARN 42056 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-27T15:49:19.786+09:00  INFO 42056 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-27T15:49:19.791+09:00  INFO 42056 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-27T15:49:20.207+09:00  INFO 42056 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-27T15:49:21.992+09:00  WARN 42056 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-27T15:49:22.936+09:00  INFO 42056 --- [    Test worker] c.example.forum.ForumApplicationTests    : Started ForumApplicationTests in 9.899 seconds (process running for 12.583)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
