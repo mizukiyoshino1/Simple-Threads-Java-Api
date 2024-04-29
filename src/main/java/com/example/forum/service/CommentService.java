@@ -2,19 +2,25 @@ package com.example.forum.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.forum.controller.form.CommentForm;
 import com.example.forum.repository.CommentRepository;
+import com.example.forum.repository.UserRepository;
 import com.example.forum.repository.entity.Comment;
+import com.example.forum.repository.entity.User;
 
 @Service
 public class CommentService {
 
     @Autowired
     CommentRepository commentRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     /**
      * コメント取得
@@ -30,9 +36,14 @@ public class CommentService {
     /*
      * レコード追加
      */
-    public void saveComment(CommentForm reqComment) {
+    public CommentForm saveComment(CommentForm reqComment) {
         Comment saveComment = setCommentEntity(reqComment);
-        commentRepository.save(saveComment);
+        Comment saved = commentRepository.save(saveComment);
+
+        // ユーザ情報を取得
+        Optional<User> userOptiional = userRepository.findByUserId(saved.getUserId());
+        User user = userOptiional.get();
+        return setCommentForm(saved, user);
     }
 
     /*
@@ -54,6 +65,21 @@ public class CommentService {
             comments.add(comment);
         }
         return comments;
+    }
+
+    /**
+     * DBから取得したデータをFormに設定
+     * 
+     */
+    private CommentForm setCommentForm(Comment saved, User user) {
+        CommentForm savedComment = new CommentForm();
+        savedComment.setId(saved.getId());
+        savedComment.setUserId(saved.getUserId());
+        savedComment.setReportId(saved.getReportId());
+        savedComment.setCommentText(saved.getCommentText());
+        savedComment.setUserName(user.getUserName());
+        savedComment.setProfileImageUrl(user.getProfileImageUrl());
+        return savedComment;
     }
 
     /*

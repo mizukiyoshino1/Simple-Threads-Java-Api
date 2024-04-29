@@ -37,7 +37,7 @@ public class CommentController {
      * 
      */
     @PostMapping("comment")
-    public void addComment(@RequestBody Map<String, String> requestBody) {
+    public CommentForm addComment(@RequestBody Map<String, String> requestBody) {
         // 画面から取得したデータを変数に格納
         String userId = requestBody.get("userId");
         String reqReportId = requestBody.get("reportId");
@@ -50,10 +50,10 @@ public class CommentController {
         reqComment.setReportId(reportId);
         reqComment.setCommentText(commentText);
 
-        // コメントをテーブルに追加
-        commentService.saveComment(reqComment);
+        // コメントをテーブルに追加(追加した情報を取得)
+        CommentForm savedComment = commentService.saveComment(reqComment);
 
-        return;
+        return savedComment;
     }
 
 }
