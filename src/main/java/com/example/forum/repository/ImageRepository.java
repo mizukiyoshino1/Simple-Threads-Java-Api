@@ -12,4 +12,7 @@ public interface ImageRepository extends JpaRepository<Image, Integer> {
 
     // 投稿に紐づく画像を習得する
     List<Image> findByReportId(Integer reportId);
+
+    // 投稿に紐づく画像を削除
+    void deleteByReportId(Integer reportId);
 }

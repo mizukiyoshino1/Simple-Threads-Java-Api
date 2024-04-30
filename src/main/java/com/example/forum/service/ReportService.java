@@ -1,6 +1,7 @@
 package com.example.forum.service;
 
 import com.example.forum.controller.form.ReportForm;
+import com.example.forum.repository.CommentRepository;
 import com.example.forum.repository.ImageRepository;
 import com.example.forum.repository.LikeRepository;
 import com.example.forum.repository.ReportRepository;
@@ -19,6 +20,9 @@ import java.util.stream.Collectors;
 public class ReportService {
     @Autowired
     ReportRepository reportRepository;
+
+    @Autowired
+    CommentRepository commentRepository;
 
     @Autowired
     LikeRepository likeRepository;
@@ -99,8 +103,15 @@ public class ReportService {
      */
     @Transactional
     public void deleteReport(int id) {
-        // 関連するlikeテーブルのレコードを削除
+        // コメントの削除
+        commentRepository.deleteByReportId(id);
+
+        // 画像の削除
+        imageRepository.deleteByReportId(id);
+
+        // いいね情報の削除
         likeRepository.deleteByReportId(id);
+
         // レポートの削除
         reportRepository.deleteById(id);
     }

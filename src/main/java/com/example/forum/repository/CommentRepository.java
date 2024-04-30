@@ -18,4 +18,9 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
     @Query("SELECT c.id, c.userId, c.reportId, c.commentText, u.userName, u.profileImageUrl " +
             "FROM Comment c LEFT OUTER JOIN User u ON u.userId = c.userId")
     List<Object[]> findCommentsWithUserInfo();
+
+    /**
+     * レポート削除に伴うコメント削除
+     */
+    void deleteByReportId(Integer reportId);
 }
