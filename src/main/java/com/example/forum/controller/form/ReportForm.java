@@ -3,6 +3,8 @@ package com.example.forum.controller.form;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class ReportForm {
@@ -25,4 +27,5 @@ public class ReportForm {
 
     private String updatedDate;
 
+    private List<String> imageUrls;
 }
